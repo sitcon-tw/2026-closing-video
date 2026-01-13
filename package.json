@@ -20,6 +20,7 @@
 	"devDependencies": {
 		"@types/three": "^0.182.0",
 		"gsap-video-export": "^2.1.0",
+		"husky": "^9.1.7",
 		"prettier": "^3.7.4",
 		"prettier-plugin-organize-imports": "^4.3.0",
 		"prettier-plugin-packagejson": "^2.5.21",
