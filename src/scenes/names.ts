@@ -21,26 +21,18 @@ for (let i = 0; i < 50; i++) {
 		opacity: 0,
 		shininess: 150,
 		emissive: particleColors[Math.floor(Math.random() * particleColors.length)],
-		emissiveIntensity: 0.3,
+		emissiveIntensity: 0.3
 	});
 	const particle = new THREE.Mesh(geometry, material);
 
-	const pos = new THREE.Vector3(
-		(Math.random() - 0.5) * 60,
-		(Math.random() - 0.5) * 40,
-		(Math.random() - 0.5) * 30 - 5
-	);
+	const pos = new THREE.Vector3((Math.random() - 0.5) * 60, (Math.random() - 0.5) * 40, (Math.random() - 0.5) * 30 - 5);
 	particle.position.copy(pos);
 
 	scene.add(particle);
 	particles.push({
 		mesh: particle,
-		velocity: new THREE.Vector3(
-			(Math.random() - 0.5) * 0.05,
-			(Math.random() - 0.5) * 0.05,
-			(Math.random() - 0.5) * 0.02
-		),
-		originalPos: pos.clone(),
+		velocity: new THREE.Vector3((Math.random() - 0.5) * 0.05, (Math.random() - 0.5) * 0.05, (Math.random() - 0.5) * 0.02),
+		originalPos: pos.clone()
 	});
 }
 
@@ -60,7 +52,7 @@ scene.add(pointLight2);
 lights.push(pointLight2);
 
 function animateNames(time: number) {
-	particles.forEach((p) => {
+	particles.forEach(p => {
 		// Swirling motion
 		p.mesh.position.x = p.originalPos.x + Math.sin(time * 0.5 + p.originalPos.y * 0.1) * 3;
 		p.mesh.position.y = p.originalPos.y + Math.cos(time * 0.3 + p.originalPos.x * 0.1) * 2;
@@ -78,8 +70,8 @@ function animateNames(time: number) {
 
 function cleanup() {
 	unregisterAnimate(animateNames);
-	particles.forEach((p) => scene.remove(p.mesh));
-	lights.forEach((light) => scene.remove(light));
+	particles.forEach(p => scene.remove(p.mesh));
+	lights.forEach(light => scene.remove(light));
 }
 
 export function names(tl: gsap.core.Timeline) {
@@ -92,7 +84,7 @@ export function names(tl: gsap.core.Timeline) {
 	// Fade in particles
 	tl.to(".names-section", { opacity: 1, duration: 0.5 }, 4);
 	particles.forEach((p, i) => {
-		tl.to((p.mesh.material as THREE.MeshPhongMaterial), { opacity: 0.8, duration: 0.5 }, 4 + i * 0.02);
+		tl.to(p.mesh.material as THREE.MeshPhongMaterial, { opacity: 0.8, duration: 0.5 }, 4 + i * 0.02);
 	});
 
 	tl.to(".names", { opacity: 1, y: 0, duration: 2 }, 4);
@@ -100,8 +92,8 @@ export function names(tl: gsap.core.Timeline) {
 	// Hide names section and particles
 	tl.to(".names", { opacity: 0, y: -50, duration: 1.5 }, 8);
 
-	particles.forEach((p) => {
-		tl.to((p.mesh.material as THREE.MeshPhongMaterial), { opacity: 0, duration: 1 }, 8.5);
+	particles.forEach(p => {
+		tl.to(p.mesh.material as THREE.MeshPhongMaterial, { opacity: 0, duration: 1 }, 8.5);
 	});
 
 	tl.to(".names-section", { opacity: 0, duration: 0.5 }, 9);

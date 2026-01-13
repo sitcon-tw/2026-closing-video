@@ -1,4 +1,4 @@
 onlyBuiltDependencies:
-  - '@ffmpeg-installer/darwin-arm64'
+  - "@ffmpeg-installer/darwin-arm64"
   - esbuild
   - rebrowser-puppeteer

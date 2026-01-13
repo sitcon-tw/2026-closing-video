@@ -23,7 +23,7 @@ for (let i = 0; i < 12; i++) {
 		opacity: 0,
 		shininess: 100,
 		emissive: torusColors[Math.floor(Math.random() * torusColors.length)],
-		emissiveIntensity: 0.2,
+		emissiveIntensity: 0.2
 	});
 	const torus = new THREE.Mesh(geometry, material);
 
@@ -42,8 +42,8 @@ for (let i = 0; i < 12; i++) {
 		speed: 0.3 + Math.random() * 0.2,
 		rotationSpeed: {
 			x: (Math.random() - 0.5) * 0.05,
-			y: (Math.random() - 0.5) * 0.05,
-		},
+			y: (Math.random() - 0.5) * 0.05
+		}
 	});
 }
 
@@ -54,7 +54,7 @@ const centerMaterial = new THREE.MeshPhongMaterial({
 	transparent: true,
 	opacity: 0,
 	emissive: 0xf59e0b,
-	emissiveIntensity: 0.5,
+	emissiveIntensity: 0.5
 });
 const centerSphere = new THREE.Mesh(centerGeometry, centerMaterial);
 centerSphere.position.z = -5;
@@ -76,7 +76,7 @@ scene.add(pointLight2);
 lights.push(pointLight2);
 
 function animateOutro(time: number) {
-	toruses.forEach((t) => {
+	toruses.forEach(t => {
 		// Orbit around center
 		t.angle += t.speed * 0.016;
 		t.mesh.position.x = Math.cos(t.angle) * t.radius;
@@ -100,9 +100,9 @@ function animateOutro(time: number) {
 
 function cleanup() {
 	unregisterAnimate(animateOutro);
-	toruses.forEach((t) => scene.remove(t.mesh));
+	toruses.forEach(t => scene.remove(t.mesh));
 	scene.remove(centerSphere);
-	lights.forEach((light) => scene.remove(light));
+	lights.forEach(light => scene.remove(light));
 }
 
 export function outro(tl: gsap.core.Timeline) {
@@ -116,7 +116,7 @@ export function outro(tl: gsap.core.Timeline) {
 	tl.to(".outro-section", { opacity: 1, duration: 0.5 }, 10);
 
 	toruses.forEach((t, i) => {
-		tl.to((t.mesh.material as THREE.MeshPhongMaterial), { opacity: 0.8, duration: 0.5 }, 10 + i * 0.05);
+		tl.to(t.mesh.material as THREE.MeshPhongMaterial, { opacity: 0.8, duration: 0.5 }, 10 + i * 0.05);
 	});
 	tl.to(centerMaterial, { opacity: 0.9, duration: 1 }, 10);
 
@@ -125,8 +125,8 @@ export function outro(tl: gsap.core.Timeline) {
 	// Fade out
 	tl.to(".outro", { opacity: 0, scale: 1.3, duration: 2 }, 13);
 
-	toruses.forEach((t) => {
-		tl.to((t.mesh.material as THREE.MeshPhongMaterial), { opacity: 0, duration: 1.5 }, 13);
+	toruses.forEach(t => {
+		tl.to(t.mesh.material as THREE.MeshPhongMaterial, { opacity: 0, duration: 1.5 }, 13);
 	});
 	tl.to(centerMaterial, { opacity: 0, duration: 1.5 }, 13);
 

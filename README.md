@@ -74,26 +74,26 @@ import { registerAnimate, scene, unregisterAnimate } from "../three-setup";
 
 ```typescript
 export function myScene(tl: gsap.core.Timeline) {
-  // 建立 3D 物件
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshPhongMaterial({ color: 0xff0000 });
-  const mesh = new THREE.Mesh(geometry, material);
-  scene.add(mesh);
+	// 建立 3D 物件
+	const geometry = new THREE.BoxGeometry(1, 1, 1);
+	const material = new THREE.MeshPhongMaterial({ color: 0xff0000 });
+	const mesh = new THREE.Mesh(geometry, material);
+	scene.add(mesh);
 
-  // 註冊動畫函式
-  function animate(time: number) {
-    mesh.rotation.y = time;
-  }
-  
-  tl.call(() => registerAnimate(animate), [], startTime);
+	// 註冊動畫函式
+	function animate(time: number) {
+		mesh.rotation.y = time;
+	}
 
-  // 清理函式
-  function cleanup() {
-    unregisterAnimate(animate);
-    scene.remove(mesh);
-  }
-  
-  tl.call(cleanup, [], endTime);
+	tl.call(() => registerAnimate(animate), [], startTime);
+
+	// 清理函式
+	function cleanup() {
+		unregisterAnimate(animate);
+		scene.remove(mesh);
+	}
+
+	tl.call(cleanup, [], endTime);
 }
 ```
 
