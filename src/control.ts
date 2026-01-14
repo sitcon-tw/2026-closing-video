@@ -6,7 +6,7 @@ export function controlTimeline(timeline: gsap.core.Timeline) {
 	if (isExport) controls.style.display = "none";
 
 	const playBtn = document.getElementById("play-pause")!;
-	playBtn.textContent = "⏸"; // Start in playing state
+	playBtn.textContent = "⏸";
 
 	const scrubber = document.getElementById("scrub") as HTMLInputElement;
 	scrubber?.addEventListener("input", () => {

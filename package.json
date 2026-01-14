@@ -5,14 +5,19 @@
 	"license": "Apache-2.0",
 	"type": "module",
 	"scripts": {
-		"build": "tsc && vite build",
-		"dev": "vite",
-		"export": "vite build && vite preview --port 5173 --strictPort & wait-on http://localhost:5173 && gsap-video-export http://localhost:5173/?export=true --fps 60 --resolution 1920x1080 --out out.mp4 -h false",
+		"astro": "astro",
+		"build": "astro build",
+		"dev": "astro dev",
+		"export": "astro build && astro preview --port 4321 --strictPort & wait-on http://localhost:4321 && gsap-video-export http://localhost:4321/?export=true --fps 60 --resolution 1920x1080 --out out.mp4 -h false",
 		"format": "prettier --write .",
+		"preinstall": "npx only-allow pnpm",
 		"prepare": "husky",
+		"preview": "astro preview",
 		"test": "tsc --noEmit"
 	},
 	"dependencies": {
+		"@astrojs/ts-plugin": "^1.10.6",
+		"astro": "^5.16.9",
 		"cannon": "^0.6.2",
 		"gsap": "^3.14.2",
 		"three": "^0.182.0"
@@ -22,11 +27,10 @@
 		"gsap-video-export": "^2.1.0",
 		"husky": "^9.1.7",
 		"prettier": "^3.7.4",
+		"prettier-plugin-astro": "^0.14.1",
 		"prettier-plugin-organize-imports": "^4.3.0",
 		"prettier-plugin-packagejson": "^2.5.21",
-		"typescript": "~5.9.3",
-		"vite": "^7.2.4",
-		"wait-on": "^9.0.3"
+		"typescript": "~5.9.3"
 	},
 	"packageManager": "pnpm@10.28.0+sha512.05df71d1421f21399e053fde567cea34d446fa02c76571441bfc1c7956e98e363088982d940465fd34480d4d90a0668bc12362f8aa88000a64e83d0b0e47be48"
 }
