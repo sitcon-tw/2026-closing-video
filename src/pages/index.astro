@@ -1,5 +1,5 @@
 ---
-
+import "@/style.css";
 ---
 
 <!doctype html>
@@ -9,11 +9,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>SITCON 2026 閉幕動畫</title>
 		<meta name="description" content="SITCON 2026 閉幕動畫" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-		<link rel="manifest" href="/site.webmanifest" />
-		<link rel="stylesheet" href="/src/style.css" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/2026/closing/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/2026/closing/favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/2026/closing/favicon/favicon-16x16.png" />
+		<link rel="manifest" href="/2026/closing/site.webmanifest" />
 	</head>
 	<body>
 		<main>
@@ -33,7 +32,7 @@
 			<input id="scrub" type="range" min="0" max="15" step="0.01" value="0" />
 			<button id="play-pause">▶︎</button>
 		</div>
-		<script src="/src/main.ts"></script>
+		<script src="@/main.ts"></script>
 		<script>
 			//	import gsap from "/node_modules/gsap/index.js";
 			// if (new URLSearchParams(location.search).get("export") === "true") {
